@@ -1,0 +1,85 @@
+﻿@model HouseHoldFinance.Models.HouseholdViewModel
+
+
+<h2 style="padding-bottom:2em;">@Model.HHName</h2>
+<div class="col-md-12" style="padding-bottom:5em; padding-left:0;">
+    <div class="col-md-6" style="padding-left:0;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Members</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model.Users)
+                                {
+                                    <tr>
+                                        <td>@user.FullName</td>
+                                        <td>@user.Email</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+        <h4>About Households</h4>
+        <p>Households are how we group accounts and users.</p>
+        <p>Each user belongs to only 1 household, but the household can have many users.</p>
+        <p>Each user in your household has full access to all account data.</p>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row col-md-12">
+    <h3>Invite </h3>
+    <h5>Invite another user to join your household</h5>
+    @using (Html.BeginForm("Create", "Invites", FormMethod.Post, new { @class = "form-horizontal m-t-40", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("HouseholdId", Model.HHId)
+        <div class="form-group">
+            <div class="col-xs-4">
+                <input class="form-control" type="email" required="" name="Email" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3"></div>
+            <div class="col-xs-4">
+                <button class="btn btn-purple w-md" type="submit">Send Invitation</button>
+            </div>
+        </div>
+    }
+
+
+</div>
+@*<div>
+        <h4>Household</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <h5>Household Name</h5>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HHName)
+            </dd>
+
+        </dl>
+    </div>*@
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.HHId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

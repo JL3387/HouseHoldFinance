@@ -1,0 +1,246 @@
+﻿@using HouseHoldFinance.Helpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="img/favicon_1.ico">
+
+    <title>Velonic - Responsive Admin Dashboard Template</title>
+
+    <!-- Google-Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic' rel='stylesheet'>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reset.css" rel="stylesheet" />
+
+    <!--Animation css-->
+    <link href="~/Content/animate.css" rel="stylesheet" />
+
+    <!-- sweet alerts -->
+    <link href="~/Content/sweet-alert.min.css" rel="stylesheet" />
+
+    <!--Icon-fonts css-->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+
+    <!--Morris Chart CSS -->
+    <link href="~/Content/morris.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/helper.css" rel="stylesheet" />
+    <link href="~/Content/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Aside Start-->
+    <aside class="left-panel">
+
+        <!-- brand -->
+        <div class="logo">
+            <a href="index.html" class="logo-expanded">
+                <img src="~/img/single-logo.png" alt="logo">
+                <span class="nav-label">Velonic</span>
+            </a>
+        </div>
+        <!-- / brand -->
+        <!-- Navbar Start -->
+        <nav class="navigation">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="ion-pie-graph"></i> <span class="nav-label">Home Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "PersonalAccounts")"><i class="ion-cash"></i> <span class="nav-label">Account</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Budgets")"><i class="ion-ios7-calculator"></i> <span class="nav-label">Budget</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Details", "Households", new { id = User.Identity.GetHouseholdId() })"><i class="ion-ios7-home"></i> <span class="nav-label">Household</span></a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </aside>
+    <!-- Aside Ends-->
+    <!--Main Content Start -->
+    <section class="content">
+
+        <!-- Header -->
+        <header class="top-head container-fluid">
+            <button type="button" class="navbar-toggle pull-left">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Search -->
+            <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                <input type="text" placeholder="Search..." class="form-control">
+            </form>
+
+            <!-- Left navbar -->
+            <nav class=" navbar-default hidden-xs" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">English <span class="caret"></span></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">German</a></li>
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Italian</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </nav>
+
+            <!-- Right navbar -->
+            <ul class="list-inline navbar-right top-menu top-right-menu">
+                <!-- mesages -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-envelope-o "></i>
+                        <span class="badge badge-sm up bg-purple count">4</span>
+                    </a>
+                    <ul class="dropdown-menu extended fadeInUp animated nicescroll" tabindex="5001">
+                        <li>
+                            <p>Messages</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><img src="img/avatar-2.jpg" class="img-circle thumb-sm m-r-15" alt="img"></span>
+                                <span class="block"><strong>John smith</strong></span>
+                                <span class="media-body block">New tasks needs to be done<br><small class="text-muted">10 seconds ago</small></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><img src="img/avatar-3.jpg" class="img-circle thumb-sm m-r-15" alt="img"></span>
+                                <span class="block"><strong>John smith</strong></span>
+                                <span class="media-body block">New tasks needs to be done<br><small class="text-muted">3 minutes ago</small></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><img src="img/avatar-4.jpg" class="img-circle thumb-sm m-r-15" alt="img"></span>
+                                <span class="block"><strong>John smith</strong></span>
+                                <span class="media-body block">New tasks needs to be done<br><small class="text-muted">10 minutes ago</small></span>
+                            </a>
+                        </li>
+                        <li>
+                            <p><a href="inbox.html" class="text-right">See all Messages</a></p>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /messages -->
+                <!-- Notification -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge badge-sm up bg-pink count">3</span>
+                    </a>
+                    <ul class="dropdown-menu extended fadeInUp animated nicescroll" tabindex="5002">
+                        <li class="noti-header">
+                            <p>Notifications</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><i class="fa fa-user-plus fa-2x text-info"></i></span>
+                                <span>New user registered<br><small class="text-muted">5 minutes ago</small></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><i class="fa fa-diamond fa-2x text-primary"></i></span>
+                                <span>Use animate.css<br><small class="text-muted">5 minutes ago</small></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="pull-left"><i class="fa fa-bell-o fa-2x text-danger"></i></span>
+                                <span>Send project demo files to client<br><small class="text-muted">1 hour ago</small></span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <p><a href="#" class="text-right">See all notifications</a></p>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /Notification -->
+                <!-- user login dropdown start-->
+                @*<li class="dropdown text-center">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="img/avatar-2.jpg" class="img-circle profile-img thumb-sm">
+                            <span class="username">John Deo </span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
+                            <li><a href="profile.html"><i class="fa fa-briefcase"></i>Profile</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="#"><i class="fa fa-bell"></i> Friends <span class="label label-info pull-right mail-info">5</span></a></li>
+                            <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        </ul>
+                    </li>*@
+                @Html.Partial("_LoginPartial")
+                <!-- user login dropdown end -->
+            </ul>
+            <!-- End right navbar -->
+
+        </header>
+        <!-- Header Ends -->
+        <!-- Page Content Start -->
+        <!-- ================== -->
+
+        <div class="wraper container-fluid">
+
+            @RenderBody()
+
+        </div>
+
+        <!-- Page Content Ends -->
+        <!-- ================== -->
+        <!-- Footer Start -->
+        <footer class="footer">
+            2015 © Velonic.
+        </footer>
+        <!-- Footer Ends -->
+
+
+
+    </section>
+    <!-- Main Content Ends -->
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/pace.min.js"></script>
+    <script src="~/Scripts/modernizr.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/jquery.scrollTo.min.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.js"></script>
+
+    <script src="~/Scripts/jquery.app.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
