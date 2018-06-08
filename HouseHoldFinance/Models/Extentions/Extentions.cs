@@ -12,7 +12,7 @@ namespace HouseHoldFinance.Models.Extentions
 		public static string GetFullName(this IIdentity user)
 		{
 			var ClaimsUser = (ClaimsIdentity)user;
-			var claim = ClaimsUser.Claims.FirstOrDefault(c => c.Type == "Name");
+			var claim = ClaimsUser.Claims.FirstOrDefault(c => c.Type == "DisplayName");
 			if (claim != null)
 			{
 				return claim.Value;
