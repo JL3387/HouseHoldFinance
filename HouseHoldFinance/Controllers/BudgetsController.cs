@@ -56,6 +56,8 @@ namespace HouseHoldFinance.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                budget.HouseholdId = db.Users.Find(userId).HouseholdId.Value;
                 db.Budgets.Add(budget);
                 db.SaveChanges();
                 return RedirectToAction("Index");
