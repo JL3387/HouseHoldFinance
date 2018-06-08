@@ -7,17 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HouseHoldFinance.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HouseHoldFinance.Controllers
 {
     public class BudgetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         // GET: Budgets
         public ActionResult Index()
         {
-            var budgets = db.Budgets.Include(b => b.Household);
+            var userId = User.Identity.GetUserId();
+            var hhId = db.Users.Find(userId).HouseholdId;
+            var budgets = db.Budgets.Where(h => h.HouseholdId == hhId);
             return View(budgets.ToList());
         }
 
