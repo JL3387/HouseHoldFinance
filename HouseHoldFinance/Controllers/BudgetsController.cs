@@ -14,13 +14,15 @@ namespace HouseHoldFinance.Controllers
     public class BudgetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         // GET: Budgets
         public ActionResult Index()
         {
-			var usr = User.Identity.GetUserId();
-			var hhId = db.Users.Find(usr).HouseholdId;
-			var budgets = db.Budgets.Include(b => b.Household).Where(b => b.HouseholdId == hhId);
+            var userId = User.Identity.GetUserId();
+            var hhId = db.Users.Find(userId).HouseholdId;
+            var budgets = db.Budgets.Where(h => h.HouseholdId == hhId);
+
             return View(budgets.ToList());
         }
 
@@ -55,6 +57,8 @@ namespace HouseHoldFinance.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                budget.HouseholdId = db.Users.Find(userId).HouseholdId.Value;
                 db.Budgets.Add(budget);
                 db.SaveChanges();
                 return RedirectToAction("Index");
