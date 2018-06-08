@@ -210,6 +210,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AuthorizeHouseholdRequired.cs" />
     <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\Extentions\Extentions.cs" />
     <Compile Include="Models\Finance.cs" />
     <Compile Include="Models\HouseholdViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
