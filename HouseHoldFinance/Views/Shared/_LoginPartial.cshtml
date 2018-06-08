@@ -12,9 +12,6 @@
             
             @Html.ActionLink("Hello " + User.Identity.GetFullName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li>
-            @User.Identity.GetFullName()
-        </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
