@@ -22,6 +22,7 @@ namespace HouseHoldFinance.Controllers
             var userId = User.Identity.GetUserId();
             var hhId = db.Users.Find(userId).HouseholdId;
             var budgets = db.Budgets.Where(h => h.HouseholdId == hhId);
+
             return View(budgets.ToList());
         }
 
